@@ -1,4 +1,6 @@
 # Basic solver for 9x9 Sudoku with backtracking
+
+# Add 9x9 Sudoku puzzle here (can be edited to accomodate larger puzzles)
 puzzle = [
     [0,0,0,2,6,0,7,0,1],
     [6,8,0,0,7,0,0,9,0],
