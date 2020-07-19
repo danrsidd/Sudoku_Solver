@@ -11,6 +11,7 @@ puzzle = [
     [7,0,3,0,1,8,0,0,0]
 ]
 
+# Ranges representing the 9x9 puzzle grid (edit these to accomodate large puzzles)
 box1 = range(0,3) # Columns or Rows 0,1,2
 box2 = range(3,6) # Columns or Rows 3,4,5
 box3 = range(6,9) # Columns or Rows 6,7,8
@@ -30,6 +31,7 @@ def boxChecker(pos):
     return p
 
 def puzzleFull():
+    # Returns whether puzzle is full (True if there are no blanks (0's))
     for i in range(len(puzzle)):
         for j in range(len(puzzle[i])):
             if puzzle[i][j] == 0:
@@ -37,6 +39,7 @@ def puzzleFull():
     return True
 
 def emptyPos():
+    # Returns coordinate pair of next empty (0) space
     for i in range(len(puzzle)):
         for j in range(len(puzzle[0])):
             if puzzle[i][j] == 0:
@@ -44,6 +47,7 @@ def emptyPos():
     return None
 
 def possible(y,x,n):
+    # Checks to see if it's possible to place a number in a given coordinate
     for i in range(len(puzzle)):
         # Check columns
         if puzzle[y][i] == n:
