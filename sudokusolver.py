@@ -1,4 +1,4 @@
-# Basic solver for 9x9 Sudoku with backtracking
+'''Basic solver for 9x9 Sudoku with backtracking.'''
 
 # Add 9x9 Sudoku puzzle here (can be edited to accomodate larger puzzles)
 puzzle = [
@@ -19,11 +19,12 @@ box2 = range(3,6) # Columns or Rows 3,4,5
 box3 = range(6,9) # Columns or Rows 6,7,8
 
 def print_puzzle():
+    '''Uses global puzzle list and prints puzzle out, row by row.'''
     for x in range(len(puzzle)):
         print(puzzle[x])
 
 def boxChecker(pos):
-    # Checks to see which of the 9 Sodoku boxes to loop through
+    '''Takes in y or x coordinate point and returns the 3x3 box the coordinate is located in.'''    
     if pos in box1:
         p = box1
     elif pos in box2:
@@ -33,7 +34,10 @@ def boxChecker(pos):
     return p
 
 def puzzleFull():
-    # Returns whether puzzle is full (True if there are no blanks (0's))
+    '''
+    Uses global puzzle list and returns whether the puzzle is full. 
+    Returns True if there are no blanks (0's).
+    '''
     for i in range(len(puzzle)):
         for j in range(len(puzzle[i])):
             if puzzle[i][j] == 0:
@@ -41,7 +45,10 @@ def puzzleFull():
     return True
 
 def emptyPos():
-    # Returns coordinate pair of next empty (0) space
+    '''
+    Uses global puzzle list and returns coordinate pair of next empty (0) space.
+    Returns None if there are no empty spaces.
+    '''
     for i in range(len(puzzle)):
         for j in range(len(puzzle[0])):
             if puzzle[i][j] == 0:
@@ -49,7 +56,10 @@ def emptyPos():
     return None
 
 def possible(y,x,n):
-    # Checks to see if it's possible to place a number in a given coordinate
+    '''
+    Takes in y (col) and x (row) coordinate of puzzle along with a number (n). 
+    Returns whether it is possible to place n in given coordinate (True or False).
+    '''
     for i in range(len(puzzle)):
         # Check columns
         if puzzle[y][i] == n:
@@ -65,6 +75,10 @@ def possible(y,x,n):
     return True
 
 def solve():
+    '''
+    Solves global puzzle list with a recursive backtracking approach. 
+    Once the puzzle is full, the print_puzzle() function is called.
+    '''
     if puzzleFull():
         print_puzzle()
     else:
